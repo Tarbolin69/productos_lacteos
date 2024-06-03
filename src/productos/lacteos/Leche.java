@@ -10,15 +10,16 @@ public class Leche extends Producto {
         this.precioBase = precio;
         this.peso = litros;
         this.fechaEnvase = LocalDate.now();
+        // TODO Avisar cuando expira.
         this.fechaVencimiento = fechaEnvase.plusDays(7);
     }
+
+    // El metodo este va a haber que moverlo a algun otro lado para usarlo con todos los objetos
     public void imprimirInformacion() {
         // TODO Hacer table con printf
         DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                System.out.println("ID: " + numeroUnico);
-                System.out.println("Precio: " + precioBase + "$");
-                System.out.println("Peso: " + peso + "L");
-                System.out.println("Envasado el: " + fechaEnvase.format(formatoFecha));
-                System.out.println("Fecha de vencimiento: " + fechaVencimiento.format(formatoFecha));
+        System.out.printf("%-36s | %-7s | %-7s | %-10s | %-10s |%n", "ID", "Precio", "Peso", "Envase", "Expiración");
+        System.out.println("=".repeat(84));
+        System.out.printf("%-36s | %-7s | %-7s | %-10s | %-10s |%n", numeroUnico, precioBase + "$", peso + "L", fechaEnvase, fechaVencimiento);
     }
 }
