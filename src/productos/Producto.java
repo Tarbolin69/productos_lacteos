@@ -4,8 +4,9 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 public abstract class Producto {
-    protected UUID numeroUnico = UUID.randomUUID();
+    protected UUID numeroUnico;
     protected int precioBase;
-    protected LocalDate fechaEnvase = LocalDate.now();
+    protected Double peso;
+    protected LocalDate fechaEnvase;
     protected LocalDate fechaVencimiento;
 }
