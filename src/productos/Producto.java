@@ -8,9 +8,31 @@ import java.util.UUID;
 public abstract class Producto {
     protected UUID numeroUnico = UUID.randomUUID();
     protected int precioBase;
-    protected Double peso;
+    protected Double masaEspacial;
     protected LocalDate fechaEnvase;
-    protected LocalDate fechaVencimiento;
+    private int diasHabiles;
 
-    public abstract void imprimirInformacion();
+    public LocalDate getFechaVencimiento(int diasHasta) {
+        return fechaEnvase.plusDays(diasHasta);
+    }
+
+    public int getPrecioBase() {
+        return precioBase;
+    }
+
+    public UUID getNumeroUnico() {
+        return numeroUnico;
+    }
+
+    public Double getMasaEspacial() {
+        return masaEspacial;
+    }
+
+    public LocalDate getFechaEnvase() {
+        return fechaEnvase;
+    }
+
+    public int getDiasHabiles() {
+        return diasHabiles;
+    }
 }
