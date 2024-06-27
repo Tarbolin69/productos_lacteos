@@ -3,7 +3,6 @@ import productos.lacteos.Leche;
 
 public class Main {
     public static void main(String[] args) {
-        // Convertir "productos" en una clase
         Impresor impresoraDemoniaca = new Impresor();
         Stock stockProductos = new Stock();
         Leche lecheJersey = new Leche(1500, 1.5, true);
@@ -14,6 +13,8 @@ public class Main {
         stockProductos.add(lecheVaca);
         stockProductos.add(lecheCabra);
         stockProductos.add(lecheLeche);
+        impresoraDemoniaca.imprimirProductos(stockProductos.getProductos());
+        stockProductos.ordenarPrecio();
         impresoraDemoniaca.imprimirProductos(stockProductos.getProductos());
     }
 }
