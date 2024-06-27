@@ -26,6 +26,7 @@ public class Stock {
         return new Leche(precio, peso, esPasteurizado );
     }
 
+    // Filtrar por objectos
 
     public void add(Producto producto) {
         this.productos.add(producto);
