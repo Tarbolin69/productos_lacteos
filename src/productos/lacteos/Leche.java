@@ -9,7 +9,6 @@ import java.util.Scanner;
 
 public class Leche extends Producto {
     private boolean esPasteurizada;
-    private final int diasHabiles = 7;
 
     public Leche() {
         Scanner scanner = new Scanner(System.in);
@@ -28,18 +27,16 @@ public class Leche extends Producto {
     }
 
     public Leche(int precio, double litros, boolean pasteurizada) {
+        this.nombre = "Leche";
         this.precioBase = precio;
         this.masaEspacial = litros;
         this.esPasteurizada = pasteurizada;
         this.fechaEnvase = LocalDate.now();
+        this.diasHabiles = 7;
         // TODO Avisar cuando expira.
     }
 
     public boolean isEsPasteurizada() {
         return esPasteurizada;
-    }
-
-    public int getDiasHabiles() {
-        return diasHabiles;
     }
 }

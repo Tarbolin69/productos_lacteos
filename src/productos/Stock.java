@@ -44,6 +44,10 @@ public class Stock {
         this.productos.sort(Comparator.comparing(Producto::getFechaEnvase).reversed());
     }
 
+    public void ordenarTipo() {
+        this.productos.sort(Comparator.comparing(Producto::getNombre).reversed());
+    }
+
     public List<Producto> getProductos() {
         return productos;
     }

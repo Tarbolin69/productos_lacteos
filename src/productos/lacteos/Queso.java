@@ -1,4 +1,14 @@
 package productos.lacteos;
 
-public class Queso {
+import productos.Producto;
+
+import java.time.LocalDate;
+
+public class Queso extends Producto {
+    public Queso(int precio, double kilos) {
+        this.nombre = "Queso";
+        this.precioBase = precio;
+        this.masaEspacial = kilos;
+        this.fechaEnvase = LocalDate.now();
+    }
 }
