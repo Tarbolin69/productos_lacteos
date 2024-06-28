@@ -12,8 +12,8 @@ public abstract class Producto {
     protected int diasHabiles;
     protected String medidaPeso;
 
-    public LocalDate getFechaVencimiento(int diasHasta) {
-        return fechaEnvase.plusDays(diasHasta);
+    public LocalDate getFechaVencimiento() {
+        return fechaEnvase.plusDays(diasHabiles);
     }
 
     public int getPrecioBase() {
@@ -38,5 +38,9 @@ public abstract class Producto {
 
     public String getNombre() {
         return nombre;
+    }
+
+    public String getMedidaPeso() {
+        return medidaPeso;
     }
 }
