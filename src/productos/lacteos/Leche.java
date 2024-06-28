@@ -28,6 +28,7 @@ public class Leche extends Producto {
 
     public Leche(int precio, double litros, boolean pasteurizada) {
         this.nombre = "Leche";
+        this.medidaPeso = "L";
         this.precioBase = precio;
         this.masaEspacial = litros;
         this.esPasteurizada = pasteurizada;

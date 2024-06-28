@@ -20,5 +20,14 @@ public class Main {
         stockProductos.ordenarPrecio();
         System.out.println();
         impresoraDemoniaca.imprimirProductos(stockProductos.getProductos());
+        stockProductos.ordenarTipo();
+        System.out.println();
+        impresoraDemoniaca.imprimirProductos(stockProductos.getProductos());
+        stockProductos.ordenarPeso();
+        System.out.println();
+        impresoraDemoniaca.imprimirProductos(stockProductos.getProductos());
+        stockProductos.ordenarFecha();
+        System.out.println();
+        impresoraDemoniaca.imprimirProductos(stockProductos.getProductos());
     }
 }

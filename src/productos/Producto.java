@@ -3,8 +3,6 @@ package productos;
 import java.time.LocalDate;
 import java.util.UUID;
 
-// Quiza armar una clase llamada "Stock" que sea solo una lista de Producto, para poder hacer
-// operaciones sobre todos los productos, como e print tabla
 public abstract class Producto {
     protected String nombre;
     protected UUID numeroUnico = UUID.randomUUID();
@@ -12,6 +10,7 @@ public abstract class Producto {
     protected Double masaEspacial;
     protected LocalDate fechaEnvase;
     protected int diasHabiles;
+    protected String medidaPeso;
 
     public LocalDate getFechaVencimiento(int diasHasta) {
         return fechaEnvase.plusDays(diasHasta);

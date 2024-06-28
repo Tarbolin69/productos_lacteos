@@ -1,6 +1,5 @@
 import productos.Producto;
 
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.UUID;
@@ -20,7 +19,7 @@ public class Impresor {
         double masaEspacial = producto.getMasaEspacial();
         int diasHabiles = producto.getDiasHabiles();
         String fechaEnvase = fechaFormateador.format(producto.getFechaEnvase());
-        String fechaVence = fechaFormateador.format(producto.getFechaEnvase().plusDays(diasHabiles));
+        String fechaVence = fechaFormateador.format(producto.getFechaVencimiento(diasHabiles));
         System.out.printf("%-36s | %-5s | %-7s | %-7s | %-10s | %-10s |%n", numeroUnico, nombre, precioBase + "$", masaEspacial + "L", fechaEnvase, fechaVence);
     }
 }
