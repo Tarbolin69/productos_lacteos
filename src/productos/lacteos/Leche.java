@@ -3,8 +3,6 @@ package productos.lacteos;
 import productos.Producto;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Leche extends Producto {

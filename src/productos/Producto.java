@@ -13,7 +13,7 @@ public abstract class Producto {
     protected String medidaPeso;
 
     public LocalDate getFechaVencimiento() {
-        return fechaEnvase.plusDays(diasHabiles);
+        return fechaEnvase.plusDays(diasHabiles) != fechaEnvase ? fechaEnvase.plusDays(diasHabiles) : null;
     }
 
     public int getPrecioBase() {
