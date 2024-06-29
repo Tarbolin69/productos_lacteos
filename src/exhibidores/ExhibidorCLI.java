@@ -1,3 +1,5 @@
+package exhibidores;
+
 import productos.Producto;
 import productos.Stock;
 
@@ -5,7 +7,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-public class Impresor {
+public class ExhibidorCLI {
     static String formatoTabla = "%-3s | %-20s | %-8s | %-7s | %-10s | %-11s |%n";
 
     public void imprimirProductos(Stock stock) {
@@ -19,7 +21,6 @@ public class Impresor {
             imprimirInformacion(producto, index);
         }
     }
-
     public static void imprimirInformacion(Producto producto, int index) {
         DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("dd/MM/yyy");
         String nombre = producto.getNombre();
