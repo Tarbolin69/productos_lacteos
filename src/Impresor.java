@@ -1,34 +1,39 @@
 import productos.Producto;
+import productos.Stock;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.UUID;
 
 public class Impresor {
-    public void imprimirProductos(List<Producto> productos, List<String> encabezado) {
+    static String formatoTabla = "%-3s | %-20s | %-8s | %-7s | %-10s | %-11s |%n";
+
+    public void imprimirProductos(Stock stock) {
+        List<Producto> productos = stock.getProductos();
+        List<String> encabezado = stock.getEncabezado();
         imprimirProductosVencidos(productos);
-        System.out.printf("%-36s | %-5s | %-7s | %-7s | %-10s | %-10s |%n", encabezado.toArray());
-        System.out.println("=".repeat(92));
-        productos.forEach(Impresor::imprimirInformacion);
+        System.out.printf(formatoTabla, encabezado.toArray());
+        System.out.println("=".repeat(76));
+        for (Producto producto : productos) {
+            int index = productos.indexOf(producto);
+            imprimirInformacion(producto, index);
+        }
     }
 
-    public static void imprimirInformacion(Producto producto) {
-        DateTimeFormatter fechaFormateador = DateTimeFormatter.ofPattern("dd/MM/yyy");
+    public static void imprimirInformacion(Producto producto, int index) {
+        DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("dd/MM/yyy");
         String nombre = producto.getNombre();
-        String medidaPeso = producto.getMedidaPeso();
-        UUID numeroUnico = producto.getNumeroUnico();
         int precioBase = producto.getPrecioBase();
-        double masaEspacial = producto.getMasaEspacial();
-        String fechaEnvase = fechaFormateador.format(producto.getFechaEnvase());
-        String fechaVence = producto.getFechaVencimiento() != null ? fechaFormateador.format(producto.getFechaVencimiento()) : "N/A";
-        System.out.printf("%-36s | %-5s | %-7s | %-7s | %-10s | %-10s |%n", numeroUnico, nombre, precioBase + "$", masaEspacial + medidaPeso, fechaEnvase, fechaVence);
+        int unidades = producto.getUnidades();
+        String fechaEnvase = formatoFecha.format(producto.getFechaEnvase());
+        String fechaVence = producto.getFechaVencimiento() != null ? formatoFecha.format(producto.getFechaVencimiento()) : "N/A";
+        System.out.printf(formatoTabla, index, nombre, unidades, precioBase + "$", fechaEnvase,fechaVence);
     }
     public void imprimirProductosVencidos(List<Producto> productos) {
         LocalDate hoy = LocalDate.now();
         for (Producto producto : productos) {
             if (producto.getFechaVencimiento() != null && !hoy.isBefore(producto.getFechaVencimiento())) {
-                System.out.println("* " + producto.getNumeroUnico() + " ha expirado.");
+                System.out.println("* " + productos.indexOf(producto) + " ha expirado.");
             }
         }
     }

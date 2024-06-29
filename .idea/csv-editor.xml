@@ -10,10 +10,17 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/productos2.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/src/productos.csv">
           <value>
             <Attribute>
-              <option name="separator" value="," />
+              <option name="separator" value=";" />
             </Attribute>
           </value>
         </entry>

@@ -3,12 +3,17 @@ package productos;
 import java.time.LocalDate;
 
 public class ProductoNoPerecedero extends Producto {
-    public ProductoNoPerecedero(String nombre, int precioBase, int cantidd, double masaEspacial, String medidaPeso) {
+    public ProductoNoPerecedero(String nombre, int precioBase, int unidades) {
         this.nombre = nombre;
         this.precioBase = precioBase;
-        this.cantidad = cantidd;
-        this.masaEspacial = masaEspacial;
-        this.medidaPeso = medidaPeso;
+        this.unidades = unidades;
+    }
+
+    public ProductoNoPerecedero(String nombre, int precioBase, int unidades, LocalDate envase) {
+        this.nombre = nombre;
+        this.precioBase = precioBase;
+        this.unidades = unidades;
+        this.fechaEnvase = envase;
     }
 
     public LocalDate getFechaVencimiento() {

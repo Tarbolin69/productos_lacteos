@@ -1,7 +1,7 @@
 import productos.Producto;
+import productos.ProductoNoPerecedero;
+import productos.ProductoPerecedero;
 import productos.Stock;
-import productos.lacteos.Leche;
-import productos.lacteos.Queso;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -11,44 +11,45 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CSVTransformador {
-    //public void  escribirCSV(Stock stock) {
-    //    List<Producto> productos = stock.getProductos();
-    //    StringBuilder linea = new StringBuilder();
-    //    for (Producto producto : productos ) {
-    //        linea.append(producto).append(";");
-    //    }
-    //}
+    public void escribirCSV(Stock stock){
+        File csvArchivo = new File("productos2.csv");
+        try (PrintWriter escritorCSV = new PrintWriter(csvArchivo)) {
+            List<Producto> productos = stock.getProductos();
+            String encabezado = String.join(";", stock.getEncabezado());
+            escritorCSV.println(encabezado);
+            for (Producto producto : productos) {
+                String valores = producto.productoLinea();
+                escritorCSV.println(productos.indexOf(producto) + ";" + valores);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Archivo \"productos2.csv\" no existe");
+        }
+    }
     public Stock leerCSV() {
         Stock stockProductos = new Stock();
         try {
-            File csvArchivo = new File("src/productos.csv");
+            File csvArchivo = new File("productos.csv");
             Scanner lector = new Scanner(csvArchivo);
+            lector.nextLine(); // Nos saltamos el encabezado
 
             DateTimeFormatter fechaFormateador = DateTimeFormatter.ofPattern("dd/MM/yyy");
-
-            if (lector.hasNextLine()) {
-                String encabezado = lector.nextLine();
-                String[] valores = Arrays.stream(encabezado.split(";"))
-                        .map(String::trim)
-                        .toArray(String[]::new);
-                for (String valor : valores) {
-                    stockProductos.addEncabezado(valor);
-                }
-            }
 
             while (lector.hasNextLine()) {
                 String producto = lector.nextLine();
                 String[] valores = Arrays.stream(producto.split(";"))
                         .map(String::trim)
                         .toArray(String[]::new);
-                switch (valores[1]) {
-                    case "Leche":
-                        Leche leche = new Leche(Integer.parseInt(valores[2]), Double.parseDouble(valores[3]), LocalDate.parse(valores[4], fechaFormateador));
-                        stockProductos.agregar(leche);
-                        break;
-                    case "Queso":
-                        Queso queso = new Queso(Integer.parseInt(valores[2]), Double.parseDouble(valores[3]), LocalDate.parse(valores[4], fechaFormateador));
-                        stockProductos.agregar(queso);
+                String nombre = valores[1];
+                int unidades = Integer.parseInt(valores[2]);
+                int precio = Integer.parseInt(valores[3]);
+                LocalDate envase = LocalDate.parse(valores[4], fechaFormateador);
+                if (!valores[5].equals("N/A")) {
+                    LocalDate vencimiento = LocalDate.parse(valores[5], fechaFormateador);
+                    ProductoPerecedero pp = new ProductoPerecedero(nombre, precio, unidades, envase, vencimiento);
+                    stockProductos.agregar(pp);
+                } else {
+                    ProductoNoPerecedero pnp = new ProductoNoPerecedero(nombre, precio, unidades, envase);
+                    stockProductos.agregar(pnp);
                 }
             }
             lector.close();

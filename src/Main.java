@@ -1,3 +1,5 @@
+import productos.ProductoNoPerecedero;
+import productos.ProductoPerecedero;
 import productos.Stock;
 
 public class Main {
@@ -5,28 +7,25 @@ public class Main {
         CSVTransformador lector = new CSVTransformador();
         Impresor impresoraDemoniaca = new Impresor();
         Stock stockProductos = lector.leerCSV();
-        //Leche lecheJersey = new Leche(1500, 1.5, true);
-        //Leche lecheVaca = new Leche(2500, 2.5, true);
-        //Leche lecheCabra = new Leche(1300, 1.0, true);
-        //Leche lecheLeche = new Leche(1200, 2.0, true);
-        //Queso quesoVerde = new Queso(5000, 2);
-        //stockProductos.add(lecheJersey);
-        //stockProductos.add(quesoVerde);
-        //stockProductos.add(lecheVaca);
-        //stockProductos.add(lecheCabra);
-        //stockProductos.add(lecheLeche);
-        impresoraDemoniaca.imprimirProductos(stockProductos.getProductos(), stockProductos.getEncabezado());
+        //Stock stockProductos = new Stock();
+        //ProductoPerecedero lecheJersery = new ProductoPerecedero("Leche Jersey", 1500, 50, 7);
+        //ProductoNoPerecedero mielAbeja = new ProductoNoPerecedero("Miel Pura", 2500, 20);
+        //ProductoPerecedero quesoVerde = new ProductoPerecedero("Queso Verde", 3000, 15, 96);
+        //ProductoNoPerecedero lechePolvo = new ProductoNoPerecedero("Leche en Polvo", 1600, 80);
+        //stockProductos.agregar(lecheJersery);
+        //stockProductos.agregar(mielAbeja);
+        //stockProductos.agregar(quesoVerde);
+        //stockProductos.agregar(lechePolvo);
+        impresoraDemoniaca.imprimirProductos(stockProductos);
         stockProductos.ordenarPrecio();
         System.out.println();
-        impresoraDemoniaca.imprimirProductos(stockProductos.getProductos(), stockProductos.getEncabezado());
-        stockProductos.ordenarTipo();
-        System.out.println();
-        impresoraDemoniaca.imprimirProductos(stockProductos.getProductos(), stockProductos.getEncabezado());
-        stockProductos.ordenarPeso();
-        System.out.println();
-        impresoraDemoniaca.imprimirProductos(stockProductos.getProductos(), stockProductos.getEncabezado());
+        impresoraDemoniaca.imprimirProductos(stockProductos);
         stockProductos.ordenarFecha();
         System.out.println();
-        impresoraDemoniaca.imprimirProductos(stockProductos.getProductos(), stockProductos.getEncabezado());
+        impresoraDemoniaca.imprimirProductos(stockProductos);
+        stockProductos.ordenarUnidades();
+        System.out.println();
+        impresoraDemoniaca.imprimirProductos(stockProductos);
+        lector.escribirCSV(stockProductos);
     }
 }
