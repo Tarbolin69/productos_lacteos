@@ -17,18 +17,18 @@ public class Main {
         //stockProductos.add(lecheVaca);
         //stockProductos.add(lecheCabra);
         //stockProductos.add(lecheLeche);
-        impresoraDemoniaca.imprimirProductos(stockProductos.getProductos());
+        impresoraDemoniaca.imprimirProductos(stockProductos.getProductos(), stockProductos.getEncabezado());
         stockProductos.ordenarPrecio();
         System.out.println();
-        impresoraDemoniaca.imprimirProductos(stockProductos.getProductos());
+        impresoraDemoniaca.imprimirProductos(stockProductos.getProductos(), stockProductos.getEncabezado());
         stockProductos.ordenarTipo();
         System.out.println();
-        impresoraDemoniaca.imprimirProductos(stockProductos.getProductos());
+        impresoraDemoniaca.imprimirProductos(stockProductos.getProductos(), stockProductos.getEncabezado());
         stockProductos.ordenarPeso();
         System.out.println();
-        impresoraDemoniaca.imprimirProductos(stockProductos.getProductos());
+        impresoraDemoniaca.imprimirProductos(stockProductos.getProductos(), stockProductos.getEncabezado());
         stockProductos.ordenarFecha();
         System.out.println();
-        impresoraDemoniaca.imprimirProductos(stockProductos.getProductos());
+        impresoraDemoniaca.imprimirProductos(stockProductos.getProductos(), stockProductos.getEncabezado());
     }
 }

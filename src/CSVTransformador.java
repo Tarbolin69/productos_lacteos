@@ -10,6 +10,9 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class CSVTransformador {
+    public void  escribirCSV(Stock stock) {
+
+    }
     public Stock leerCSV(String archivo) {
         Stock stockProductos = new Stock();
         try {
@@ -18,10 +21,11 @@ public class CSVTransformador {
 
             DateTimeFormatter fechaFormateador = DateTimeFormatter.ofPattern("dd/MM/yyy");
 
-
             if (lector.hasNextLine()) {
                 String encabezado = lector.nextLine();
-                String[] valores = encabezado.split(";");
+                String[] valores = Arrays.stream(encabezado.split(";"))
+                        .map(String::trim)
+                        .toArray(String[]::new);
                 for (String valor : valores) {
                     stockProductos.addEncabezado(valor);
                 }

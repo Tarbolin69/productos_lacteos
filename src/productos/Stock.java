@@ -8,24 +8,6 @@ public class Stock {
     private final List<String> encabezado = new ArrayList<>();
     private final List<Producto> productos = new ArrayList<>();
 
-    public Stock() {}
-
-    //public Producto crearProducto() {
-    //    boolean esPasteurizado = false;
-    //    Scanner scanner = new Scanner(System.in);
-    //    System.out.println("Ingrese el precio:");
-    //    int precio = Integer.parseInt(scanner.nextLine());
-    //    System.out.println("Ingrese el peso (Litros):");
-    //    double peso = Double.parseDouble(scanner.nextLine());
-    //    System.out.println("Es pausterizada?");
-    //    String pasuterizado = scanner.nextLine();
-    //    if (pasuterizado.equals("si")) {
-    //        esPasteurizado = true;
-    //    }
-    //    scanner.close();
-    //    return new Leche(precio, peso, esPasteurizado );
-    //}
-
     public void add(Producto producto) {
         this.productos.add(producto);
     }
@@ -52,5 +34,9 @@ public class Stock {
 
     public List<Producto> getProductos() {
         return productos;
+    }
+
+    public List<String> getEncabezado() {
+        return encabezado;
     }
 }

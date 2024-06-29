@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.UUID;
 
 public class Impresor {
-    public void imprimirProductos(List<Producto> productos) {
-        System.out.printf("%-36s | %-5s | %-7s | %-7s | %-10s | %-10s |%n", "ID", "Tipo", "Precio", "Peso", "Envase", "Expiración");
+    public void imprimirProductos(List<Producto> productos, List<String> encabezado) {
+        System.out.printf("%-36s | %-5s | %-7s | %-7s | %-10s | %-10s |%n", encabezado.toArray());
         System.out.println("=".repeat(92));
         productos.forEach(Impresor::imprimirInformacion);
     }
