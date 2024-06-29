@@ -1,12 +1,10 @@
 import productos.Stock;
-import productos.lacteos.Leche;
-import productos.lacteos.Queso;
 
 public class Main {
     public static void main(String[] args) {
         CSVTransformador lector = new CSVTransformador();
         Impresor impresoraDemoniaca = new Impresor();
-        Stock stockProductos = lector.leerCSV("productos.csv");
+        Stock stockProductos = lector.leerCSV();
         //Leche lecheJersey = new Leche(1500, 1.5, true);
         //Leche lecheVaca = new Leche(2500, 2.5, true);
         //Leche lecheCabra = new Leche(1300, 1.0, true);

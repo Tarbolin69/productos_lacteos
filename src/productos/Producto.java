@@ -7,14 +7,12 @@ public abstract class Producto {
     protected String nombre;
     protected UUID numeroUnico = UUID.randomUUID();
     protected int precioBase;
+    protected int cantidad;
     protected Double masaEspacial;
-    protected LocalDate fechaEnvase;
-    protected int diasHabiles;
+    protected LocalDate fechaEnvase = LocalDate.now();
     protected String medidaPeso;
 
-    public LocalDate getFechaVencimiento() {
-        return fechaEnvase.plusDays(diasHabiles) != fechaEnvase ? fechaEnvase.plusDays(diasHabiles) : null;
-    }
+    public abstract LocalDate getFechaVencimiento();
 
     public int getPrecioBase() {
         return precioBase;
@@ -32,15 +30,15 @@ public abstract class Producto {
         return fechaEnvase;
     }
 
-    public int getDiasHabiles() {
-        return diasHabiles;
-    }
-
     public String getNombre() {
         return nombre;
     }
 
     public String getMedidaPeso() {
         return medidaPeso;
+    }
+
+    public int getCantidad() {
+        return cantidad;
     }
 }

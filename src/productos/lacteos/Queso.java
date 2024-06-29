@@ -11,8 +11,8 @@ public class Queso extends Producto {
         this.precioBase = precio;
         this.masaEspacial = kilos;
         this.fechaEnvase = fechaEnvase;
-
     }
+
     public Queso(int precio, double kilos) {
         this.nombre = "Queso";
         this.medidaPeso = "Kg";

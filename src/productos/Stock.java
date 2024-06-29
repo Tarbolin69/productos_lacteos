@@ -3,13 +3,18 @@ package productos;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.UUID;
 
 public class Stock {
     private final List<String> encabezado = new ArrayList<>();
     private final List<Producto> productos = new ArrayList<>();
 
-    public void add(Producto producto) {
+    public void agregar(Producto producto) {
         this.productos.add(producto);
+    }
+
+    public void borrarUUID(UUID IDdeProducto) {
+        productos.removeIf(producto -> producto.getNumeroUnico().equals(IDdeProducto));
     }
 
     public void addEncabezado(String encabezado) {

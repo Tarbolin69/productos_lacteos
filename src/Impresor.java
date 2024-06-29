@@ -1,11 +1,13 @@
 import productos.Producto;
 
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.UUID;
 
 public class Impresor {
     public void imprimirProductos(List<Producto> productos, List<String> encabezado) {
+        imprimirProductosVencidos(productos);
         System.out.printf("%-36s | %-5s | %-7s | %-7s | %-10s | %-10s |%n", encabezado.toArray());
         System.out.println("=".repeat(92));
         productos.forEach(Impresor::imprimirInformacion);
@@ -21,5 +23,13 @@ public class Impresor {
         String fechaEnvase = fechaFormateador.format(producto.getFechaEnvase());
         String fechaVence = producto.getFechaVencimiento() != null ? fechaFormateador.format(producto.getFechaVencimiento()) : "N/A";
         System.out.printf("%-36s | %-5s | %-7s | %-7s | %-10s | %-10s |%n", numeroUnico, nombre, precioBase + "$", masaEspacial + medidaPeso, fechaEnvase, fechaVence);
+    }
+    public void imprimirProductosVencidos(List<Producto> productos) {
+        LocalDate hoy = LocalDate.now();
+        for (Producto producto : productos) {
+            if (producto.getFechaVencimiento() != null && !hoy.isBefore(producto.getFechaVencimiento())) {
+                System.out.println("* " + producto.getNumeroUnico() + " ha expirado.");
+            }
+        }
     }
 }

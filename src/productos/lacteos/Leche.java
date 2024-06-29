@@ -8,22 +8,6 @@ import java.util.Scanner;
 public class Leche extends Producto {
     private boolean esPasteurizada;
 
-    public Leche() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Ingrese el precio:");
-        this.precioBase = Integer.parseInt(scanner.nextLine());
-        System.out.println("Ingrese el peso (Litros):");
-        this.masaEspacial = Double.parseDouble(scanner.nextLine());
-        System.out.println("Es pausterizada?");
-        String pasuterizado = scanner.nextLine();
-        if (pasuterizado.equals("si")) {
-            this.esPasteurizada = true;
-        } else {
-            this.esPasteurizada = false;
-        }
-        scanner.close();
-    }
-
     // Para leer de CSV
     public Leche(int precio, double litros, LocalDate fechaEnvase) {
         this.nombre = "Leche";
