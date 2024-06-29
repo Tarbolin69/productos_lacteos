@@ -18,7 +18,7 @@ public class CSVTransformador {
             String encabezado = String.join(";", stock.getEncabezado());
             escritorCSV.println(encabezado);
             for (Producto producto : productos) {
-                String valores = producto.productoLinea();
+                String valores = String.join(";", producto.productoString());
                 escritorCSV.println(productos.indexOf(producto) + ";" + valores);
             }
         } catch (FileNotFoundException e) {

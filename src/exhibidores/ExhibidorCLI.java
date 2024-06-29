@@ -7,10 +7,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-public class ExhibidorCLI {
+public class ExhibidorCLI implements Visualizable {
     static String formatoTabla = "%-3s | %-20s | %-8s | %-7s | %-10s | %-11s |%n";
 
-    public void imprimirProductos(Stock stock) {
+    public void visualizar(Stock stock) {
         List<Producto> productos = stock.getProductos();
         List<String> encabezado = stock.getEncabezado();
         imprimirProductosVencidos(productos);

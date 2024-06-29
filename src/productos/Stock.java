@@ -6,7 +6,16 @@ import java.util.List;
 
 public class Stock {
     private final List<Producto> productos = new ArrayList<>();
-    private final List<String> encabezado = new ArrayList<>(List.of("ID", "Nombre", "Unidades", "Precio", "Envase", "Vencimiento"));
+    private final List<String> encabezado = new ArrayList<>();
+
+    public Stock() {
+        encabezado.add("ID");
+        encabezado.add("Nombre");
+        encabezado.add("Unidades");
+        encabezado.add("Precio");
+        encabezado.add("Envase");
+        encabezado.add("Vencimiento");
+    }
 
     public void agregar(Producto producto) {
         this.productos.add(producto);

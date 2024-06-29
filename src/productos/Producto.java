@@ -9,8 +9,8 @@ public abstract class Producto {
     protected LocalDate fechaEnvase = LocalDate.now();
     protected LocalDate fechaVencimiento = getFechaVencimiento();
 
-    public String productoLinea() {
-        return nombre + ";" + unidades + ";" + precioBase + ";" + fechaEnvase + ";" + (fechaVencimiento != null ? fechaVencimiento : "N/A");
+    public String[] productoString() {
+        return new String[]{nombre, String.valueOf(unidades), String.valueOf(precioBase), String.valueOf(fechaEnvase), (fechaVencimiento != null ? String.valueOf(fechaVencimiento) : "N/A")};
     }
 
     public abstract LocalDate getFechaVencimiento();
