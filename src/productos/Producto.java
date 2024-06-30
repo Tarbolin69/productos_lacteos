@@ -32,4 +32,11 @@ public abstract class Producto {
     public int getUnidades() {
         return unidades;
     }
+
+    public void agregarUnidades(int cantidad) {
+        this.unidades += unidades;
+    }
+    public void removerUnidades(int cantidad) {
+        this.unidades -= unidades;
+    }
 }

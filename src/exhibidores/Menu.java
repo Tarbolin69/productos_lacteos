@@ -27,7 +27,7 @@ public class Menu implements Visualizable {
     }
     public void visualizar(Stock stock) {
         int opcion = 0;
-        while (opcion!=7) {
+        while (opcion!=8) {
             try {
                 System.out.println("1 - Agregar producto");
                 System.out.println("2 - Eliminar producto");
@@ -35,7 +35,8 @@ public class Menu implements Visualizable {
                 System.out.println("4 - Mostrar stock");
                 System.out.println("5 - Filtrar stock");
                 System.out.println("6 - Abrir tabla GUI");
-                System.out.println("7 - salir");
+                System.out.println("7 - Modificar unidades");
+                System.out.println("8 - salir");
                 System.out.println("Ingrese una opcion: ");
                 opcion = Integer.parseInt(scanner.nextLine());
             } catch (InputMismatchException|NumberFormatException e){
@@ -137,6 +138,32 @@ public class Menu implements Visualizable {
                         swingGUI.visualizar(inventario);
                         break;
                     case 7:
+                        try {
+                            System.out.println("1 - Recudir unidades");
+                            System.out.println("2 - Añadir unidades");
+                            System.out.println("Elija un metodo: ");
+                            int filtro = Integer.parseInt(scanner.nextLine());
+                            System.out.println("ID del producto a manipular: ");
+                            int idManipular = Integer.parseInt(scanner.nextLine());
+                            System.out.println("Cantidad de unidades para modificar: ");
+                            int numUnidades = Integer.parseInt(scanner.nextLine());
+                            switch (filtro) {
+                                case 1:
+                                    stock.getProductos().get(idManipular).removerUnidades(numUnidades);
+                                    if (stock.getProductos().get(idManipular).getUnidades() <= 0) {
+                                        stock.getProductos().remove(idManipular);
+                                    }
+                                    break;
+                                case 2:
+                                    stock.getProductos().get(idManipular).agregarUnidades(numUnidades);
+                                    break;
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Porfavor, ingrese una opcion valida.");
+                        }
+
+                        break;
+                    case 8:
                         generarCSV.escribirCSV(inventario);
                         break;
                     default:
