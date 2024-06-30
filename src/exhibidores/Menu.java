@@ -27,14 +27,15 @@ public class Menu implements Visualizable {
     }
     public void visualizar(Stock stock) {
         int opcion = 0;
-        while (opcion!=6) {
+        while (opcion!=7) {
             try {
                 System.out.println("1 - Agregar producto");
                 System.out.println("2 - Eliminar producto");
                 System.out.println("3 - Eliminar productos vencidos");
                 System.out.println("4 - Mostrar stock");
                 System.out.println("5 - Filtrar stock");
-                System.out.println("6 - Salir");
+                System.out.println("6 - Abrir tabla GUI");
+                System.out.println("7 - salir");
                 System.out.println("Ingrese una opcion: ");
                 opcion = Integer.parseInt(scanner.nextLine());
             } catch (InputMismatchException|NumberFormatException e){
@@ -132,6 +133,10 @@ public class Menu implements Visualizable {
                         }
                         break;
                     case 6:
+                        ExhibidorGUI swingGUI = new ExhibidorGUI();
+                        swingGUI.visualizar(inventario);
+                        break;
+                    case 7:
                         generarCSV.escribirCSV(inventario);
                         break;
                     default:
