@@ -1,3 +1,5 @@
+package transformadores;
+
 import productos.Producto;
 import productos.ProductoNoPerecedero;
 import productos.ProductoPerecedero;
@@ -12,7 +14,7 @@ import java.util.Scanner;
 
 public class CSVTransformador {
     public void escribirCSV(Stock stock){
-        File csvArchivo = new File("productos2.csv");
+        File csvArchivo = new File("productos.csv");
         try (PrintWriter escritorCSV = new PrintWriter(csvArchivo)) {
             List<Producto> productos = stock.getProductos();
             String encabezado = String.join(";", stock.getEncabezado());
@@ -22,7 +24,7 @@ public class CSVTransformador {
                 escritorCSV.println(productos.indexOf(producto) + ";" + valores);
             }
         } catch (FileNotFoundException e) {
-            System.out.println("Archivo \"productos2.csv\" no existe");
+            System.out.println("Archivo \"productos.csv\" no existe");
         }
     }
     public Stock leerCSV() {

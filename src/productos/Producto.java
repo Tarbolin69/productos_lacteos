@@ -1,6 +1,7 @@
 package productos;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public abstract class Producto {
     protected String nombre;
@@ -10,7 +11,8 @@ public abstract class Producto {
     protected LocalDate fechaVencimiento = getFechaVencimiento();
 
     public String[] productoString() {
-        return new String[]{nombre, String.valueOf(unidades), String.valueOf(precioBase), String.valueOf(fechaEnvase), (fechaVencimiento != null ? String.valueOf(fechaVencimiento) : "N/A")};
+        DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("dd/MM/yyy");
+        return new String[]{nombre, String.valueOf(unidades), String.valueOf(precioBase), String.valueOf(formatoFecha.format(fechaEnvase)), (fechaVencimiento != null ? formatoFecha.format(fechaVencimiento) : "N/A")};
     }
 
     public abstract LocalDate getFechaVencimiento();

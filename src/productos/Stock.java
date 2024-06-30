@@ -1,5 +1,6 @@
 package productos;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -39,5 +40,18 @@ public class Stock {
 
     public List<String> getEncabezado() {
         return encabezado;
+    }
+
+    public void elimanarIndice(int indice) {
+        if (indice >= 0 && indice <= productos.size()) {
+            productos.remove(indice);
+        } else {
+            System.out.println("Este indice no tiene producto relacionado");
+        }
+    }
+
+    public void eliminarVencidos() {
+        LocalDate hoy = LocalDate.now();
+        productos.removeIf(producto -> producto.getFechaVencimiento() != null && !hoy.isBefore(producto.getFechaVencimiento()));
     }
 }

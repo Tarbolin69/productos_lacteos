@@ -1,5 +1,7 @@
 ID;Nombre;Unidades;Precio;Envase;Vencimiento
-0;Leche Jersey;50;1500;03/02/2024;06/07/2024
+0;Queso Verde;15;3000;02/03/2024;03/09/2025
 1;Miel Pura;20;2500;03/02/2024;N/A
-2;Queso Verde;15;3000;03/02/2024;03/10/2024
-3;Leche en Polvo;80;1600;03/02/2024;N/A
+2;Leche;22;2500;29/06/2024;29/06/2024
+3;Leche de Cabra;22;2500;29/06/2024;29/06/2024
+4;Leche en Polvo;80;1600;04/03/2024;N/A
+5;Leche Jersey;50;1500;03/02/2024;10/02/2024

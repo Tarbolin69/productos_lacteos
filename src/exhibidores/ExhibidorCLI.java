@@ -20,6 +20,7 @@ public class ExhibidorCLI implements Visualizable {
             int index = productos.indexOf(producto);
             imprimirInformacion(producto, index);
         }
+        System.out.println("=".repeat(76));
     }
     public static void imprimirInformacion(Producto producto, int index) {
         DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("dd/MM/yyy");
