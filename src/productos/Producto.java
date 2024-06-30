@@ -12,7 +12,7 @@ public abstract class Producto {
 
     public String[] productoString() {
         DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("dd/MM/yyy");
-        return new String[]{nombre, String.valueOf(unidades), String.valueOf(precioBase), String.valueOf(formatoFecha.format(fechaEnvase)), (fechaVencimiento != null ? formatoFecha.format(fechaVencimiento) : "N/A")};
+        return new String[]{nombre, String.valueOf(unidades), String.valueOf(precioBase), formatoFecha.format(fechaEnvase), (fechaVencimiento != null ? formatoFecha.format(fechaVencimiento) : "N/A")};
     }
 
     public abstract LocalDate getFechaVencimiento();
